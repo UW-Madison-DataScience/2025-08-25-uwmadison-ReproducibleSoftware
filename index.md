@@ -444,7 +444,7 @@ during the workshop.
 {% include lc/setup.html %}
 {% elsif site.carpentry == "incubator" %}
 <strong>Please check the "Setup" page of the 
-<a href ="https://carpentries-incubator.github.io/python-intermediate-development/">lesson site</a> for instructions to follow 
+<a href ="https://carpentries-incubator.github.io/fair-research-software/#software-setup">lesson site</a> for instructions to follow 
 to obtain the software and data you will need to follow the lesson.</strong>
 Be sure to check your setup prior to the workshop — the earlier the better. If you need any assistance, please visit the <a href ="https://hub.datascience.wisc.edu/consultation/#:~:text=expertise%20you%20need.-,Coding%20Meetup,-Coding%20Meetup%20is">Data Science Hub</a> on Thursdays, 2:30-4:30pm. For appointments outside of Coding Meetup, please email <a href ="mailto:facilitator@datascience.wisc.edu">facilitator@datascience.wisc.edu</a>.
 {% endif %}
