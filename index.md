@@ -13,13 +13,14 @@ humandate: "Aug 25-28, 2025"    # human-readable dates for the workshop (e.g., "
 humantime: "9:00 a.m. - 12:30 p.m."    # human-readable times for the workshop e.g., "9:00 am - 4:30 pm CEST (7:00 am - 2:30 pm UTC)"
 startdate: 2025-08-25      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
 enddate: 2025-08-28        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
-instructor: ["Ryan Bemowski", "TBD"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
+instructor: ["Ryan Bemowski", "OM"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
 helper: ["Ryan Bemowski", "TBD"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
 email: ["facilitator@datascience.wisc.edu"]    # boxed, comma-separated list of contact email addresses for the host, lead instructor, or whoever else is handling questions, like ["marlyn.wescoff@example.org", "fran.bilas@example.org", "ruth.lichterman@example.org"]
 collaborative_notes: https://pad.carpentries.org/2025-08-25-uwmadison-ReproducibleSoftware # optional: URL for the workshop collaborative notes, e.g. an Etherpad or Google Docs document (e.g., https://pad.carpentries.org/2015-01-01-euphoria)
 eventbrite: 1070926964379          # optional: alphanumeric key for Eventbrite registration, e.g., "1234567890AB" (if Eventbrite is being used)
 what3words:           # optional: what3words (https://what3words.com) address of the workshop venue, without leading slashes e.g. "globe.lessening.computers"
 ---
+
 {% comment %} See instructions in the comments below for how to edit specific sections of this workshop template. {% endcomment %}
 
 {% comment %}
@@ -31,13 +32,6 @@ double quotation marks around the value, unless specified otherwise.
 And run 'make workshop-check' *before* committing to make sure that changes are good.
 {% endcomment %}
 
-
-
-{% comment %}
-8< ============= For a workshop delete from here =============
-
-8< ============================= until here ==================
-{% endcomment %}
 
 {% comment %}
 Check DC curriculum
@@ -74,42 +68,93 @@ displayed if the 'eventbrite' field in the header is not set.
 {% if page.eventbrite %}
 <strong>Some adblockers block the registration window. If you do not see the
   registration box below, please check your adblocker settings.</strong>
-<div id="eventbrite-widget-container-1070926964379"></div>
-
+<div id="eventbrite-widget-container"></div>
 <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
-
 <script type="text/javascript">
-    var exampleCallback = function() {
-        console.log('Order complete!');
-    };
-
     window.EBWidgets.createWidget({
         // Required
         widgetType: 'checkout',
-        eventId: '1070926964379',
-        iframeContainerId: 'eventbrite-widget-container-1070926964379',
-
-        // Optional
-        iframeContainerHeight: 425,  // Widget height in pixels. Defaults to a minimum of 425px if not provided
-        onOrderComplete: exampleCallback  // Method called when an order has successfully completed
+        eventId: {{page.eventbrite}},
+        iframeContainerId: 'eventbrite-widget-container',
     });
 </script>
 {% endif %}
 
-<h2 id="register">Registration</h2>
 
-If the above EventBrite integration doesn't work, try visiting this [link to register](https://www.eventbrite.com/e/trustworthy-ai-tickets-1070926964379?aff=oddtdtcreator). 
+<h2 id="Overview">Overview</h2>
+
+<p>
+This <a href="https://carpentries-incubator.github.io/python-intermediate-development/">lesson</a> aims to teach a core set of established, intermediate-level software development skills and best practices for working as part of a team in a research environment. Python is used as the example programming language. The skills taught are not an exhaustive list (see learning objectives below) but rather a selective and proven set of collaborative development techniques that provide a strong foundation for continued learning. Learners in this lesson will gain <strong>intermediate software engineering skills</strong> to design more robust, maintainable software, moving beyond simple scripts to code that considers the full software lifecycle, stakeholder needs, team collaboration, and structured development processes.
+</p>
+
+<h4 align="left"><strong>Learning Objectives</strong></h4>
+
+<p align="left">
+  <em>By the end of this course, participants will be able to:</em>
+</p>
+
+<ul>
+  <li>Set up and use a development environment with source code management tools for collaborative development</li>
+  <li>Automate code testing using a framework, parameterization, and continuous integration</li>
+  <li>Apply programming paradigms and design techniques to create robust, extensible software</li>
+  <li>Understand and use code review processes to improve software quality</li>
+  <li>Prepare and release software for reuse by others</li>
+  <li>Use agile techniques to manage feedback and software improvement</li>
+</ul>
+
+Check the <a href="https://carpentries-incubator.github.io/python-intermediate-development/">lesson website</a> to preview the full schedule of topics.
+
+<h4 align="left"><strong>Target Audience & Prerequisites</strong></h4>
+
+<p align="left">
+  <strong>This lesson is for you if:</strong>
+</p>
+
+<ul>
+  <li>You’ve been writing software for a while, possibly for others, but it’s undocumented or unstructured.</li>
+  <li>You want to learn:
+    <ul>
+      <li>Intermediate software engineering techniques and tools</li>
+      <li>How to collaborate effectively with others to develop software</li>
+      <li>How to prepare your software for use by others</li>
+    </ul>
+  </li>
+  <li>You meet the prerequisites detailed below for Python, Git, and Shell.
+  </li>
+</ul>
+
+<p align="left">
+  <strong>Participants should meet the following criteria. <a href="https://carpentries-incubator.github.io/python-intermediate-development/quiz.html">Take this short quiz</a> to check your readiness:</strong>
+</p>
+
+<h5 align="left"><strong>Git</strong></h5>
+
+<ul>
+  <li>You understand the concept of version control.</li>
+  <li>You’ve configured Git and created a local repository.</li>
+  <li>You know how to clone repositories, add/commit changes, and push/pull to/from a remote repository.</li>
+  <li>Optional: You’ve compared file versions or ignored specific files.</li>
+</ul>
+
+<h5 align="left"><strong>Python</strong></h5>
+
+<ul>
+  <li>You have basic programming knowledge, including variables, lists, conditionals, functions, and importing libraries.</li>
+  <li>You’ve written Python scripts or Jupyter notebooks to solve domain-specific problems.</li>
+</ul>
+
+<h5 align="left"><strong>Shell</strong></h5>
+
+<ul>
+  <li>You’ve used a command line interface (e.g., Bash) to navigate a UNIX-style file system and run commands.</li>
+  <li>Optional: You’ve redirected inputs/outputs from commands.</li>
+</ul> 
+
+<hr/>
 
 <h2 id="general">General Information</h2>
 
-{% comment %}
-INTRODUCTION
-
-Edit the general explanatory paragraph below if you want to change
-the pitch.
-{% endcomment %}
-
-{% if site.carpentry == "incubator" %}
+{% if site.carpentry == "swc" %}
 {% include swc/intro.html %}
 {% elsif site.carpentry == "dc" %}
 {% include dc/intro.html %}
@@ -127,7 +172,7 @@ AUDIENCE
 Explain who your audience is.  (In particular, tell readers if the
 workshop is only open to people from a particular institution.
 {% endcomment %}
-{% if site.carpentry == "incubator" %}
+{% if site.carpentry == "swc" %}
 {% include swc/who.html %}
 {% elsif site.carpentry == "dc" %}
 {% include dc/who.html %}
@@ -273,8 +318,8 @@ Display the contact email address set in the configuration file.
   To learn more about the roles at the workshop (who will be doing what),
   refer to <a href="https://carpentries.org/workshop_faq/#what-are-the-roles-of-everyone-participating-in-a-workshop">our Workshop FAQ</a>.
 </p>
-{% comment %}
 
+{% comment %}
 WHO CAN ATTEND?
 
 If you would like to specify who can attend the workshop,
@@ -337,6 +382,30 @@ We will use this <a href="{{ page.collaborative_notes }}">collaborative document
 {% endif %}
 
 
+{% comment %}
+SURVEYS - DO NOT EDIT SURVEY LINKS
+{% endcomment %}
+<h2 id="surveys">Surveys</h2>
+<p>Please be sure to complete these surveys before and after the workshop.</p>
+{% if site.carpentry == "incubator" %}
+<p><a href="{{ site.incubator_pre_survey }}">Pre-workshop Survey</a></p>
+<p><a href="{{ site.incubator_post_survey }}">Post-workshop Survey</a></p>
+{% elsif site.incubator_pre_survey or site.incubator_post_survey %}
+<div class="alert alert-danger">
+WARNING: you have defined custom pre- and/or post-survey links for
+a workshop not configured for The Carpentries Incubator
+(the value of `curriculum` is not set to `incubator` in `_config.yml`).
+Please comment out the `incubator_pre_survey` and `incubator_post_survey` fields
+in `_config.yml` or, if this workshop is teaching a lesson in the Incubator,
+change the value of `carpentry` to `incubator`.
+</div>
+{% else %}
+<p><a href="{{ site.pre_survey }}{{ site.github.project_title }}">Pre-workshop Survey</a></p>
+<p><a href="{{ site.post_survey }}{{ site.github.project_title }}">Post-workshop Survey</a></p>
+{% endif %}
+
+<hr/>
+
 
 {% comment %}
 SCHEDULE
@@ -362,7 +431,7 @@ of code below the Schedule `<h2>` header below with
 
 <h2 id="schedule">Schedule</h2>
 
-{% if site.carpentry == "incubator" %}
+{% if site.carpentry == "swc" %}
 {% include swc/schedule.html %}
 {% elsif site.carpentry == "dc" %}
 {% include dc/schedule.html %}
@@ -401,9 +470,9 @@ please preview your site before committing, and make sure to run
 <h2 id="setup">Setup</h2>
 
 <p>
-  To participate in
-  {% if site.carpentry == "incubator" %}
-  the
+  To participate in a
+  {% if site.carpentry == "swc" %}
+  Software Carpentry
   {% elsif site.carpentry == "dc" %}
   Data Carpentry
   {% elsif site.carpentry == "lc" %}
@@ -438,14 +507,16 @@ These are the installation instructions for the tools used
 during the workshop.
 {% endcomment %}
 
-{% if site.carpentry == "incubator" %}
+{% if site.carpentry == "swc" %}
 {% include swc/setup.html %}
 {% elsif site.carpentry == "dc" %}
 {% include dc/setup.html %}
 {% elsif site.carpentry == "lc" %}
 {% include lc/setup.html %}
 {% elsif site.carpentry == "incubator" %}
-Please check the "Setup" page of
-<a href="{{site.incubator_lesson_site}}">the lesson homepage</a> for instructions to follow
-to obtain the software and data you will need to follow the lesson.
+<strong>Please check the "Setup" page of the 
+<a href ="https://carpentries-incubator.github.io/python-intermediate-development/">lesson site</a> for instructions to follow 
+to obtain the software and data you will need to follow the lesson.</strong>
+Be sure to check your setup prior to the workshop — the earlier the better. If you need any assistance, please visit the <a href ="https://hub.datascience.wisc.edu/consultation/#:~:text=expertise%20you%20need.-,Coding%20Meetup,-Coding%20Meetup%20is">Data Science Hub</a> on Thursdays, 2:30-4:30pm. For appointments outside of Coding Meetup, please email <a href ="mailto:facilitator@datascience.wisc.edu">facilitator@datascience.wisc.edu</a>.
 {% endif %}
+
